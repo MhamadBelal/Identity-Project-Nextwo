@@ -1,0 +1,26 @@
+﻿@model List<UserRoleViewModel>
+@{
+    ViewData["Title"] = "ModifyUserInRole";
+}
+
+<h1>Modify User In Role</h1>
+
+<form method="post" asp-action="ModifyUserInRole" asp-controller="Account">
+<div class="card">
+    <div class="card-header">
+        Users in this card
+    </div>
+    <div class="card-body">
+        @for(int i=0;i<Model.Count;i++)
+            {
+                @Html.HiddenFor(m=> Model[i].UserId)
+                @Html.HiddenFor(m=> Model[i].UserName)
+                <input asp-for="@Model[i].IsSelected" /> @Model[i].UserName <br />
+            }
+        </div>
+    <div class="card-footer">
+        <input type="submit" value="Save" class="btn btn-success" />
+        <a asp-action="RolesList" asp-controller="Account" class="btn btn-warning">Cancel</a>
+    </div>
+</div>
+</form>
